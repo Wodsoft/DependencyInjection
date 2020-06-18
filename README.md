@@ -1,6 +1,6 @@
 DependencyInjection
 ===================
-### Porting for .Net Framework 4.0.
+### Porting for .Net Framework 4.0 base on version 1.1.1.
 
 Contains common DI abstractions that ASP.NET Core and Entity Framework Core use.
 
