@@ -27,8 +27,8 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
 
         public IServiceCallSite CreateCallSite(ServiceProvider provider, ISet<Type> callSiteChain)
         {
-            var constructors = _descriptor.ImplementationType.GetTypeInfo()
-                .DeclaredConstructors
+            var constructors = _descriptor.ImplementationType
+                .GetConstructors()
                 .Where(constructor => constructor.IsPublic)
                 .ToArray();
 
@@ -135,7 +135,7 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
             {
                 var callSite = provider.GetServiceCallSite(parameters[index].ParameterType, callSiteChain);
 
-                if (callSite == null && parameters[index].HasDefaultValue)
+                if (callSite == null && parameters[index].DefaultValue != DBNull.Value)
                 {
                     callSite = new ConstantCallSite(parameters[index].DefaultValue);
                 }

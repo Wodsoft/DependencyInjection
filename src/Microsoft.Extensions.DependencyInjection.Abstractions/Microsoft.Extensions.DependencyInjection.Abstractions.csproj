@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Abstractions for dependency injection.
@@ -13,10 +13,10 @@ Microsoft.Extensions.DependencyInjection.IServiceCollection</Description>
     <AssemblyOriginatorKeyFile>../../tools/Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>Microsoft.Extensions.DependencyInjection.Abstractions</PackageId>
+    <PackageId>Wodsoft.Extensions.DependencyInjection.Abstractions</PackageId>
     <PackageTags>dependencyinjection;di</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/aspnet/dependencyinjection</RepositoryUrl>
+    <RepositoryUrl>git://github.com/Wodsoft/DependencyInjection</RepositoryUrl>
     <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>

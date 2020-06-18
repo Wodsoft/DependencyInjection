@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.Internal
 
     // Do not take a dependency on this class unless you are explicitly trying to avoid taking a
     // dependency on Microsoft.AspNetCore.DependencyInjection.Abstractions.
-    public static class ActivatorUtilities
+    internal static class ActivatorUtilities
     {
         private static readonly MethodInfo GetServiceInfo =
             GetMethodInfo<Func<IServiceProvider, Type, Type, bool, object>>((sp, t, r, c) => GetService(sp, t, r, c));
@@ -119,7 +119,7 @@ namespace Microsoft.Extensions.Internal
                 }
                 else
                 {
-                    var constructorParameterHasDefault = constructorParameters[i].DefaultValue != null;
+                    var constructorParameterHasDefault = constructorParameters[i].DefaultValue != DBNull.Value;
                     var parameterTypeExpression = new Expression[] { serviceProvider,
                         Expression.Constant(parameterType, typeof(Type)),
                         Expression.Constant(constructor.DeclaringType, typeof(Type)),
@@ -129,7 +129,7 @@ namespace Microsoft.Extensions.Internal
 
                 // Support optional constructor arguments by passing in the default value
                 // when the argument would otherwise be null.
-                if (constructorParameters[i].DefaultValue != null)
+                if (constructorParameters[i].DefaultValue != DBNull.Value)
                 {
                     var defaultValueExpression = Expression.Constant(constructorParameters[i].DefaultValue);
                     constructorArguments[i] = Expression.Coalesce(constructorArguments[i], defaultValueExpression);
@@ -274,7 +274,7 @@ namespace Microsoft.Extensions.Internal
                         var value = provider.GetService(_parameters[index].ParameterType);
                         if (value == null)
                         {
-                            if (_parameters[index].DefaultValue == null)
+                            if (_parameters[index].DefaultValue == DBNull.Value)
                             {
                                 throw new InvalidOperationException($"Unable to resolve service for type '{_parameters[index].ParameterType}' while attempting to activate '{_constructor.DeclaringType}'.");
                             }

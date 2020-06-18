@@ -22,7 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
 
         public IService GetService(Type closedServiceType)
         {
-            var itemType = closedServiceType.GetTypeInfo().GenericTypeArguments[0];
+            var itemType = closedServiceType.GetGenericArguments()[0];
 
             ServiceEntry entry;
             return _table.TryGetEntry(itemType, out entry) ?

@@ -122,8 +122,8 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
 
         protected override Expression VisitServiceScopeService(ServiceScopeService serviceScopeService, ParameterExpression provider)
         {
-            return Expression.New(typeof(ServiceScopeFactory).GetTypeInfo()
-                    .DeclaredConstructors
+            return Expression.New(typeof(ServiceScopeFactory)
+                    .GetConstructors()
                     .Single(),
                 provider);
         }

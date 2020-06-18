@@ -24,10 +24,10 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
 
             foreach (var descriptor in descriptors)
             {
-                var serviceTypeInfo = descriptor.ServiceType.GetTypeInfo();
+                var serviceTypeInfo = descriptor.ServiceType;
                 if (serviceTypeInfo.IsGenericTypeDefinition)
                 {
-                    var implementationTypeInfo = descriptor.ImplementationType?.GetTypeInfo();
+                    var implementationTypeInfo = descriptor.ImplementationType;
 
                     if (implementationTypeInfo == null ||
                         !implementationTypeInfo.IsGenericTypeDefinition)
@@ -60,7 +60,7 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
                 else
                 {
                     Debug.Assert(descriptor.ImplementationType != null);
-                    var implementationTypeInfo = descriptor.ImplementationType.GetTypeInfo();
+                    var implementationTypeInfo = descriptor.ImplementationType;
 
                     if (implementationTypeInfo.IsGenericTypeDefinition ||
                         implementationTypeInfo.IsAbstract ||
@@ -90,7 +90,7 @@ namespace Microsoft.Extensions.DependencyInjection.ServiceLookup
                 {
                     return true;
                 }
-                else if (serviceType.GetTypeInfo().IsGenericType)
+                else if (serviceType.IsGenericType)
                 {
                     var openServiceType = serviceType.GetGenericTypeDefinition();
 

@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Default implementation of dependency injection for Microsoft.Extensions.DependencyInjection.</Description>
     <VersionPrefix>1.1.1</VersionPrefix>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFramework>net40</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -11,11 +11,10 @@
     <AssemblyOriginatorKeyFile>../../tools/Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>Microsoft.Extensions.DependencyInjection</PackageId>
+    <PackageId>Wodsoft.Extensions.DependencyInjection</PackageId>
     <PackageTags>dependencyinjection;di</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/aspnet/dependencyinjection</RepositoryUrl>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <RepositoryUrl>git://github.com/Wodsoft/DependencyInjection</RepositoryUrl>
     <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
@@ -24,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Extensions.DependencyInjection.Abstractions\Microsoft.Extensions.DependencyInjection.Abstractions.csproj" />
+    <PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />
   </ItemGroup>
 
 </Project>

@@ -87,7 +87,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 if (Interlocked.Increment(ref callCount) == 2)
                 {
-                    Task.Run(() =>
+                    TaskEx.Run(() =>
                     {
                         var realizedService = new CallSiteExpressionBuilder(_callSiteRuntimeResolver)
                             .Build(callSite);
@@ -208,12 +208,12 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private object GetEmptyIEnumerableOrNull(Type serviceType)
         {
-            var typeInfo = serviceType.GetTypeInfo();
+            var typeInfo = serviceType;
 
             if (typeInfo.IsGenericType &&
                 serviceType.GetGenericTypeDefinition() == typeof(IEnumerable<>))
             {
-                var itemType = typeInfo.GenericTypeArguments[0];
+                var itemType = typeInfo.GetGenericArguments()[0];
                 return Array.CreateInstance(itemType, 0);
             }
 
