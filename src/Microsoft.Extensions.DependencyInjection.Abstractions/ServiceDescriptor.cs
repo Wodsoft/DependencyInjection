@@ -116,7 +116,7 @@ namespace Microsoft.Extensions.DependencyInjection
             }
             else if (ImplementationFactory != null)
             {
-                var typeArguments = ImplementationFactory.GetType().GenericTypeArguments;
+                var typeArguments = ImplementationFactory.GetType().GetGenericArguments();
 
                 Debug.Assert(typeArguments.Length == 2);
 
