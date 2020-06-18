@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Helper code for the various activator services.
     /// </summary>
-    public static class ActivatorUtilities
+    public static class ActivatorUtilitiesExtensions
     {
         /// <summary>
         /// Instantiate a type with constructor arguments provided directly and/or from an <see cref="IServiceProvider"/>.
